@@ -1,0 +1,57 @@
+{
+   "Tasks": [
+        {
+            "id":1,
+            "title":"Shopping",
+            "description":"Some quick example text to build on the card title and make up thebulk of the card's content.",
+            "status":"Todo",
+            "priority":"High"
+
+        },
+        {
+            "id":2,
+            "title":"Swimming",
+            "description":"Some quick example text to build on the card title and make up thebulk of the card's content.",
+            "status":"Todo",
+            "priority":"Low"
+        },
+
+        {
+            "id":3,
+            "title":"Walking",
+            "description":"Some quick example text to build on the card title and make up thebulk of the card's content.",
+            "status":"Doing",
+            "priority":"Normal"
+
+        },
+        {
+            "id":4,
+            "title":"Writing",
+            "description":"Some quick example text to build on the card title and make up thebulk of the card's content.",
+            "status":"Doing",
+            "priority":"High"
+
+        },
+       
+        {
+            "id":5,
+            "title":"Watching TV",
+            "description":"Some quick example text to build on the card title and make up thebulk of the card's content.",
+            "status":"Done",
+            "priority":"Low"
+
+        },
+        {
+            "id":6,
+            "title":"Coding",
+            "description":"Some quick example text to build on the card title and make up thebulk of the card's content.",
+            "status":"Done",
+            "priority":"High"
+
+        }
+       
+    ]
+    
+
+    
+}
