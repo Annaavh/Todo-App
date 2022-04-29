@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./App.css";
 import AddBtn from "./components/AddBtn/AddBtn";
 import Doing from "./components/Doing/Doing";
 import Done from "./components/Done/Done";
