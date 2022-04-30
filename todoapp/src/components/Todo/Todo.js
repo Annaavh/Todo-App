@@ -7,6 +7,20 @@ function Todo({ handleShow }) {
   const todos = useSelector((state) =>
     state.todos.todo.Tasks.filter((item) => item.status === "Todo")
   );
+  const a = [];
+  const b = [];
+  let todo = [];
+  todos.map((item)=>{
+    if(item.priority==="High"){
+      a.push(item)
+    }else if(item.priority==="Normal"){
+      b.unshift(item)
+    }else{
+      b.push(item)
+    }
+    return todo = a.concat(b)
+  })
+  // console.log(todo,'priority arr')
 
   const handleBg = (item) => {
     if (item.priority === "High") {
@@ -31,7 +45,7 @@ function Todo({ handleShow }) {
           <h3>To do</h3>
         </Card.Header>
         <Card.Body style={{ padding: "15px", backgroundColor: "#F7F7F7FF" }}>
-          {todos.map((item) => (
+          {todo.map((item) => (
             <div
               key={Math.random()}
               onClick={(e) => handleShow(e, item)}

@@ -15,6 +15,19 @@ function Done({ handleShow }) {
       return "success";
     }
   };
+  const a = [];
+  const b = [];
+  let todo = [];
+  todos.map((item)=>{
+    if(item.priority==="High"){
+      a.push(item)
+    }else if(item.priority==="Normal"){
+      b.unshift(item)
+    }else{
+      b.push(item)
+    }
+    return todo = a.concat(b)
+  })
   return (
     <div>
       <Card
@@ -29,7 +42,7 @@ function Done({ handleShow }) {
           <h3>Done</h3>
         </Card.Header>
         <Card.Body>
-          {todos.map((item) => (
+          {todo.map((item) => (
             <div
               onClick={(e) => handleShow(e, item)}
               key={Math.random()}

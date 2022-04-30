@@ -5,7 +5,7 @@
             "title":"Shopping",
             "description":"Some quick example text to build on the card title and make up thebulk of the card's content.",
             "status":"Todo",
-            "priority":"High"
+            "priority":"Low"
 
         },
         {
@@ -13,7 +13,7 @@
             "title":"Swimming",
             "description":"Some quick example text to build on the card title and make up thebulk of the card's content.",
             "status":"Todo",
-            "priority":"Low"
+            "priority":"High"
         },
 
         {
