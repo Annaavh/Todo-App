@@ -1,26 +1,27 @@
 import React from "react";
-import { Badge, Card } from "react-bootstrap";
+import { Badge, Card, CloseButton } from "react-bootstrap";
 import "../../stylesheet.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteTodo } from "../../features/todos/todoSlice";
 
-function Todo({ handleShow }) {
+function Todo({ handleShow, task }) {
+  const dispatch = useDispatch();
   const todos = useSelector((state) =>
-    state.todos.todo.Tasks.filter((item) => item.status === "Todo")
+    state.todos.todo?.Tasks.filter((item) => item.status === "Todo")
   );
   const a = [];
   const b = [];
   let todo = [];
-  todos.map((item)=>{
-    if(item.priority==="High"){
-      a.push(item)
-    }else if(item.priority==="Normal"){
-      b.unshift(item)
-    }else{
-      b.push(item)
+  todos?.map((item) => {
+    if (item.priority === "High") {
+      a.push(item);
+    } else if (item.priority === "Normal") {
+      b.unshift(item);
+    } else {
+      b.push(item);
     }
-    return todo = a.concat(b)
-  })
-  // console.log(todo,'priority arr')
+    return (todo = a.concat(b));
+  });
 
   const handleBg = (item) => {
     if (item.priority === "High") {
@@ -31,6 +32,10 @@ function Todo({ handleShow }) {
       return "success";
     }
   };
+  function handleClick(e, item) {
+    e.stopPropagation();
+    dispatch(deleteTodo(item));
+  }
   return (
     <div>
       <Card
@@ -41,7 +46,13 @@ function Todo({ handleShow }) {
           overflow: "auto",
         }}
       >
-        <Card.Header>
+        <Card.Header
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            paddingTop: "10px",
+          }}
+        >
           <h3>To do</h3>
         </Card.Header>
         <Card.Body style={{ padding: "15px", backgroundColor: "#F7F7F7FF" }}>
@@ -51,7 +62,21 @@ function Todo({ handleShow }) {
               onClick={(e) => handleShow(e, item)}
               className="cardContainer"
             >
-              <Card.Title> {item.title} </Card.Title>
+              <Card.Title
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  paddingTop: "10px",
+                }}
+              >
+                {" "}
+                {item.title}{" "}
+                <CloseButton
+                  style={{ fontSize: "14px" }}
+                  onClick={(e) => handleClick(e, item)}
+                  aria-label="Hide"
+                />
+              </Card.Title>
               <Card.Text>{item.description}</Card.Text>
               <strong>Priority:</strong>{" "}
               <Badge bg={handleBg(item)}>{item.priority}</Badge>

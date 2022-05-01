@@ -1,10 +1,12 @@
 import React from "react";
-import { Badge, Card } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { Badge, Card, CloseButton } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteTodo } from "../../features/todos/todoSlice";
 
 function Done({ handleShow }) {
+  const dispatch = useDispatch();
   const todos = useSelector((state) =>
-    state.todos.todo.Tasks.filter((item) => item.status === "Done")
+    state.todos.todo?.Tasks.filter((item) => item.status === "Done")
   );
   const handleBg = (item) => {
     if (item.priority === "High") {
@@ -18,16 +20,20 @@ function Done({ handleShow }) {
   const a = [];
   const b = [];
   let todo = [];
-  todos.map((item)=>{
-    if(item.priority==="High"){
-      a.push(item)
-    }else if(item.priority==="Normal"){
-      b.unshift(item)
-    }else{
-      b.push(item)
+  todos?.map((item) => {
+    if (item.priority === "High") {
+      a.push(item);
+    } else if (item.priority === "Normal") {
+      b.unshift(item);
+    } else {
+      b.push(item);
     }
-    return todo = a.concat(b)
-  })
+    return (todo = a.concat(b));
+  });
+  function handleClick(e, item) {
+    e.stopPropagation();
+    dispatch(deleteTodo(item));
+  }
   return (
     <div>
       <Card
@@ -48,7 +54,21 @@ function Done({ handleShow }) {
               key={Math.random()}
               className="cardContainer"
             >
-              <Card.Title> {item.title} </Card.Title>
+              <Card.Title
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  paddingTop: "10px",
+                }}
+              >
+                {" "}
+                {item.title}{" "}
+                <CloseButton
+                  style={{ fontSize: "14px" }}
+                  onClick={(e) => handleClick(e, item)}
+                  aria-label="Hide"
+                />{" "}
+              </Card.Title>
               <Card.Text>{item.description}</Card.Text>
               <strong>Priority:</strong>{" "}
               <Badge bg={handleBg(item)}>{item.priority}</Badge>

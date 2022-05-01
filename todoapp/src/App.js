@@ -36,7 +36,7 @@ function App() {
           marginTop: "20px",
         }}
       >
-        <Todo handleShow={handleShow} />
+        <Todo task={task} handleShow={handleShow} />
         <Doing handleShow={handleShow} />
         <Done handleShow={handleShow} />
       </div>
