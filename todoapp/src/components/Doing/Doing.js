@@ -34,6 +34,7 @@ function Doing({ handleShow }) {
     e.stopPropagation();
     dispatch(deleteTodo(item));
   }
+  console.log(todo.length,"todo from doing")
   return (
     <div>
       <Card
@@ -48,7 +49,7 @@ function Doing({ handleShow }) {
           <h3>Doing</h3>
         </Card.Header>
         <Card.Body>
-          {todo.map((item) => (
+          {todo.length?todo.map((item) => (
             <div
               onClick={(e) => handleShow(e, item)}
               key={Math.random()}
@@ -73,7 +74,7 @@ function Doing({ handleShow }) {
               <strong>Priority:</strong>{" "}
               <Badge bg={handleBg(item)}>{item.priority}</Badge>
             </div>
-          ))}
+          )):<p>The board is empty, fell free to add tasks !</p>}
         </Card.Body>
       </Card>
     </div>

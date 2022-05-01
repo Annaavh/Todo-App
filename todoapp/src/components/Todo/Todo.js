@@ -56,7 +56,7 @@ function Todo({ handleShow, task }) {
           <h3>To do</h3>
         </Card.Header>
         <Card.Body style={{ padding: "15px", backgroundColor: "#F7F7F7FF" }}>
-          {todo.map((item) => (
+          {todo.length?todo.map((item) => (
             <div
               key={Math.random()}
               onClick={(e) => handleShow(e, item)}
@@ -81,7 +81,7 @@ function Todo({ handleShow, task }) {
               <strong>Priority:</strong>{" "}
               <Badge bg={handleBg(item)}>{item.priority}</Badge>
             </div>
-          ))}
+          )):<p>The board is empty, fell free to add tasks !</p>}
         </Card.Body>
       </Card>
     </div>
